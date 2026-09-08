@@ -142,6 +142,22 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
                         ],
                       ),
                       
+                      const SizedBox(height: 24),
+                      const Divider(height: 1, thickness: 1),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 12.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            _buildActionButton(context, Icons.near_me_outlined, 'Navigate'),
+                            Container(width: 1, height: 24, color: AppColors.divider),
+                            _buildActionButton(context, Icons.phone_outlined, 'Call'),
+                            Container(width: 1, height: 24, color: AppColors.divider),
+                            _buildActionButton(context, Icons.share_outlined, 'Share'),
+                          ],
+                        ),
+                      ),
+                      const Divider(height: 1, thickness: 1),
                       const SizedBox(height: 32),
                       
                       // Giant Price Area
@@ -378,4 +394,29 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
       ),
     );
   }
+
+  Widget _buildActionButton(BuildContext context, IconData icon, String label) {
+    return InkWell(
+      onTap: () {},
+      borderRadius: BorderRadius.circular(8),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(icon, size: 20, color: AppColors.primaryPurple),
+            const SizedBox(width: 8),
+            Text(
+              label,
+              style: Theme.of(context).textTheme.bodyMedium?.copyWith(
+                    color: AppColors.primaryPurple,
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 }
+
