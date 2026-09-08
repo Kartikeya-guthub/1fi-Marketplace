@@ -7,8 +7,8 @@ class AppColors {
   static const Color heroBgStart = Color(0xFF281193);
   static const Color heroBgEnd = Color(0xFF1B0B63); // Darker shade for depth
 
-  static const Color tabTrackBg = Color(0xFFF3EDFD); // Faint purple/grey
-  static const Color tabActiveSegment = Colors.white;
+  static const Color tabTrackBg = Colors.white; // Faint purple/grey
+  static const Color tabActiveSegment = Colors.transparent;
   static const Color tabActiveText = primaryPurple;
   static const Color tabInactiveText = Color(0xFF6E6E73);
   static const Color tabUnderlineTick = primaryPurple;
@@ -42,6 +42,8 @@ class AppColors {
   static const Color ctaDisabled = Color(0xFFE0E0E0);
   static const Color divider = Color(0xFFEBEBEB);
   static const Color shimmerCardBase = Color(0xFFE0E0E0);
-  static const Color badgeBg = Color(0xFFF3EDFD);
-  static const Color badgeText = primaryPurple;
+  static const Color badgeBg = Color(0xFFF0F0F0);
+  static const Color badgeText = Color(0xFF333333);
 }
+
+

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import '../theme/app_colors.dart';
 
 class InfoListCard extends StatelessWidget {
@@ -17,6 +17,38 @@ class InfoListCard extends StatelessWidget {
     this.onTap,
   });
 
+  Widget _buildImage() {
+    if (imageUrl == null || imageUrl!.isEmpty) {
+      return Container(
+        color: AppColors.primaryPurple.withOpacity(0.1),
+        child: Center(
+          child: Text(
+            title.isNotEmpty ? title[0].toUpperCase() : '?',
+            style: const TextStyle(
+              color: AppColors.primaryPurple,
+              fontSize: 24,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ),
+      );
+    }
+
+    if (imageUrl!.startsWith('assets/')) {
+      return Image.asset(
+        imageUrl!,
+        fit: BoxFit.cover,
+        errorBuilder: (_, __, ___) => const Icon(Icons.broken_image, color: AppColors.textSecondary),
+      );
+    }
+
+    return Image.network(
+      imageUrl!,
+      fit: BoxFit.cover,
+      errorBuilder: (_, __, ___) => const Icon(Icons.broken_image, color: AppColors.textSecondary),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Card(
@@ -28,7 +60,6 @@ class InfoListCard extends StatelessWidget {
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              // Left: Rounded square image
               Container(
                 width: 64,
                 height: 64,
@@ -37,18 +68,9 @@ class InfoListCard extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 clipBehavior: Clip.antiAlias,
-                child: imageUrl != null && imageUrl!.isNotEmpty
-                    ? Image.network(
-                        imageUrl!,
-                        fit: BoxFit.cover,
-                        errorBuilder: (context, error, stackTrace) =>
-                            const Icon(Icons.broken_image, color: AppColors.textSecondary),
-                      )
-                    : const Icon(Icons.image, color: AppColors.textSecondary),
+                child: _buildImage(),
               ),
               const SizedBox(width: 16),
-              
-              // Center: Title + Subtitle
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -69,8 +91,6 @@ class InfoListCard extends StatelessWidget {
                   ],
                 ),
               ),
-              
-              // Right: Optional Badge Pill
               if (badgeText != null) ...[
                 const SizedBox(width: 12),
                 Container(

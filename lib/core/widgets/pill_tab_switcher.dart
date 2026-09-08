@@ -52,7 +52,7 @@ class PillTabSwitcher extends StatelessWidget {
                     alignment: Alignment.bottomCenter,
                     child: Container(
                       margin: const EdgeInsets.only(bottom: 6),
-                      width: 16,
+                      width: 24,
                       height: 3,
                       decoration: BoxDecoration(
                         color: AppColors.tabUnderlineTick,
@@ -105,3 +105,5 @@ class PillTabSwitcher extends StatelessWidget {
     );
   }
 }
+
+

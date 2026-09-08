@@ -21,18 +21,17 @@ class MarketplaceTab extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SearchField(hintText: 'Search products...'),
+        SearchField(
+          hintText: 'Search online stores...',
+          onChanged: (val) {
+            ref.read(searchQueryProvider.notifier).state = val;
+          },
+        ),
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'Marketplace',
-                style: Theme.of(context).textTheme.titleLarge,
-              ),
-              const FilterPill(label: 'All Categories'),
-            ],
+          child: Text(
+            'Marketplace',
+            style: Theme.of(context).textTheme.titleLarge,
           ),
         ),
         // Removed Expanded so it can fit inside SingleChildScrollView
@@ -82,3 +81,4 @@ class MarketplaceTab extends ConsumerWidget {
     );
   }
 }
+

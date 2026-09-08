@@ -23,8 +23,10 @@ class ProductCard extends StatelessWidget {
           ? 'Sold by ${product.sellerName}\nNo-cost EMIs from ${formatINRCompact(minMonthlyEmi)}/mo'
           : 'Sold by ${product.sellerName}',
       imageUrl: product.imageUrl,
-      badgeText: formatINRCompact(product.basePrice),
+
       onTap: onTap,
     );
   }
 }
+
+

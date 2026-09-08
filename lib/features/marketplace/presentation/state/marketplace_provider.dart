@@ -14,10 +14,28 @@ final marketplaceRepositoryProvider = Provider<MarketplaceRepository>((ref) {
   return MarketplaceRepository(api);
 });
 
-// --- Fetch all products ---
-final productsProvider = FutureProvider<List<Product>>((ref) async {
+// --- Search State ---
+final searchQueryProvider = StateProvider<String>((ref) => '');
+
+// --- Fetch all products (Runs only once) ---
+final _allProductsProvider = FutureProvider<List<Product>>((ref) async {
   final repo = ref.watch(marketplaceRepositoryProvider);
   return repo.getProducts();
+});
+
+// --- Filtered products (Synchronous) ---
+final productsProvider = Provider<AsyncValue<List<Product>>>((ref) {
+  final productsAsync = ref.watch(_allProductsProvider);
+  final query = ref.watch(searchQueryProvider).toLowerCase();
+
+  return productsAsync.whenData((products) {
+    if (query.isEmpty) return products;
+    return products.where((product) => 
+      product.name.toLowerCase().contains(query) ||
+      product.sellerName.toLowerCase().contains(query) ||
+      product.category.toLowerCase().contains(query)
+    ).toList();
+  });
 });
 
 // --- Fetch single product by ID ---

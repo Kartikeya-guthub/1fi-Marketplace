@@ -1,4 +1,4 @@
-import 'dart:async';
+﻿import 'dart:async';
 import 'marketplace_api.dart';
 import 'models/models.dart';
 
@@ -30,19 +30,18 @@ class MockMarketplaceApi implements MarketplaceApi {
     );
   }
 
-  // Hardcoded mock data anchored to 1Fi marketing hero banner.
   final List<Product> _mockCatalog = const [
     Product(
       id: 'p1',
       name: 'iPhone 16 Pro',
       sellerName: 'Apple Premium Reseller',
       description: 'The ultimate iPhone featuring a new titanium design, A18 Pro chip, and advanced camera system.',
-      imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?q=80&w=600&auto=format&fit=crop', // Stock replacement
+      imageUrl: 'assets/images/iphone_titanium.webp',
       basePrice: 134900,
       category: 'Electronics',
       variants: [
-        ProductVariant(id: 'v1_1', name: 'Natural Titanium', colorHex: '#B2B0A9', available: true),
-        ProductVariant(id: 'v1_2', name: 'Black Titanium', colorHex: '#424143', available: true),
+        ProductVariant(id: 'v1_1', name: 'Natural Titanium', colorHex: '#B2B0A9', available: true, imageUrl: 'assets/images/iphone_titanium.webp'),
+        ProductVariant(id: 'v1_2', name: 'Black Titanium', colorHex: '#424143', available: true, imageUrl: 'assets/images/iphone_black.jpg'),
         ProductVariant(id: 'v1_3', name: 'White Titanium', colorHex: '#F2F1F0', available: false),
       ],
       emiPlans: [
@@ -56,7 +55,7 @@ class MockMarketplaceApi implements MarketplaceApi {
       name: 'MacBook Air M3',
       sellerName: 'Apple Premium Reseller',
       description: 'Supercharged by M3. The incredibly thin and light MacBook Air features a stunning Liquid Retina display.',
-      imageUrl: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=600&auto=format&fit=crop',
+      imageUrl: 'assets/images/iphone_titanium.webp',
       basePrice: 114900,
       category: 'Electronics',
       variants: [
@@ -73,8 +72,8 @@ class MockMarketplaceApi implements MarketplaceApi {
       id: 'p3',
       name: 'Honda Activa 6G',
       sellerName: 'Honda Authorized Dealer',
-      description: 'India\'s most loved scooter, now with advanced features and better fuel efficiency.',
-      imageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a289f?q=80&w=600&auto=format&fit=crop',
+      description: 'India''s most loved scooter, now with advanced features and better fuel efficiency.',
+      imageUrl: 'assets/images/iphone_black.jpg',
       basePrice: 78920,
       category: 'Vehicles',
       variants: [

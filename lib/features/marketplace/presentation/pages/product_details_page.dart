@@ -91,10 +91,20 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
                             ),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(16),
-                              child: Image.network(
-                                effectiveImage,
-                                fit: BoxFit.cover,
-                                errorBuilder: (_, __, ___) => const Icon(
+                              child: effectiveImage.startsWith('assets/')
+                                ? Image.asset(
+                                    effectiveImage,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, __, ___) => const Icon(
+                                      Icons.image,
+                                      size: 32,
+                                      color: AppColors.textSecondary,
+                                    ),
+                                  )
+                                : Image.network(
+                                    effectiveImage,
+                                    fit: BoxFit.cover,
+                                    errorBuilder: (_, __, ___) => const Icon(
                                   Icons.image,
                                   size: 32,
                                   color: AppColors.textSecondary,
@@ -420,5 +430,7 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
     );
   }
 }
+
+
 
 
