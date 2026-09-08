@@ -20,8 +20,8 @@ class ProductCard extends StatelessWidget {
     return InfoListCard(
       title: product.name,
       subtitle: minMonthlyEmi > 0 
-          ? 'No-cost EMIs from ${formatINRCompact(minMonthlyEmi)}/mo'
-          : product.category,
+          ? 'Sold by ${product.sellerName}\nNo-cost EMIs from ${formatINRCompact(minMonthlyEmi)}/mo'
+          : 'Sold by ${product.sellerName}',
       imageUrl: product.imageUrl,
       badgeText: formatINRCompact(product.basePrice),
       onTap: onTap,

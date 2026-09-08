@@ -35,6 +35,7 @@ class MockMarketplaceApi implements MarketplaceApi {
     Product(
       id: 'p1',
       name: 'iPhone 16 Pro',
+      sellerName: 'Apple Premium Reseller',
       description: 'The ultimate iPhone featuring a new titanium design, A18 Pro chip, and advanced camera system.',
       imageUrl: 'https://images.unsplash.com/photo-1695048133142-1a20484d2569?q=80&w=600&auto=format&fit=crop', // Stock replacement
       basePrice: 134900,
@@ -53,6 +54,7 @@ class MockMarketplaceApi implements MarketplaceApi {
     Product(
       id: 'p2',
       name: 'MacBook Air M3',
+      sellerName: 'Apple Premium Reseller',
       description: 'Supercharged by M3. The incredibly thin and light MacBook Air features a stunning Liquid Retina display.',
       imageUrl: 'https://images.unsplash.com/photo-1517336714731-489689fd1ca8?q=80&w=600&auto=format&fit=crop',
       basePrice: 114900,
@@ -70,8 +72,9 @@ class MockMarketplaceApi implements MarketplaceApi {
     Product(
       id: 'p3',
       name: 'Honda Activa 6G',
+      sellerName: 'Honda Authorized Dealer',
       description: 'India\'s most loved scooter, now with advanced features and better fuel efficiency.',
-      imageUrl: 'https://picsum.photos/600',
+      imageUrl: 'https://images.unsplash.com/photo-1558981403-c5f9899a289f?q=80&w=600&auto=format&fit=crop',
       basePrice: 78920,
       category: 'Vehicles',
       variants: [

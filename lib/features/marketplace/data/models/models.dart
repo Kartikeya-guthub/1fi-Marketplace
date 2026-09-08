@@ -5,6 +5,7 @@ class Product {
   final String imageUrl;
   final double basePrice;
   final String category;
+  final String sellerName;
   final List<ProductVariant> variants;
   final List<EmiPlan> emiPlans;
 
@@ -15,6 +16,7 @@ class Product {
     required this.imageUrl,
     required this.basePrice,
     required this.category,
+    this.sellerName = '1Fi Trusted Seller',
     this.variants = const [],
     this.emiPlans = const [],
   });
