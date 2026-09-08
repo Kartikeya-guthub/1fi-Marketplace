@@ -166,22 +166,23 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
                           children: [
                             Text(
                               product.category,
-                              style: Theme.of(context).textTheme.titleMedium?.copyWith(
+                              style: Theme.of(context).textTheme.titleSmall?.copyWith(
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                            const SizedBox(height: 4),
+                            const SizedBox(height: 2),
                             Text(
                               'Up to 12 months EMIs',
                               style: Theme.of(context).textTheme.bodySmall?.copyWith(
                                 color: AppColors.textSecondary,
+                                fontSize: 10,
                               ),
                             ),
-                            const SizedBox(height: 16),
+                            const SizedBox(height: 8),
                             Text(
                               formatINR(effectivePrice),
                               style: const TextStyle(
-                                fontSize: 40,
+                                fontSize: 24,
                                 fontWeight: FontWeight.w900,
                                 color: AppColors.textPrimary,
                               ),
@@ -190,7 +191,7 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
                         ),
                       ),
                       
-                      const SizedBox(height: 32),
+                      const SizedBox(height: 16),
 
                       // Variants
                       if (product.variants.isNotEmpty) ...[
@@ -419,4 +420,5 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
     );
   }
 }
+
 
