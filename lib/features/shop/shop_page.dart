@@ -79,15 +79,26 @@ class _ShopPageState extends State<ShopPage> {
   }
 
   Widget _buildActiveTabContent() {
+    Widget content;
     switch (_activeTabIndex) {
       case 0:
-        return const TopBrandsTab(key: ValueKey('topBrands'));
+        content = const TopBrandsTab(key: ValueKey('topBrands'));
+        break;
       case 1:
-        return const NearbyStoresTab(key: ValueKey('nearbyStores'));
+        content = const NearbyStoresTab(key: ValueKey('nearbyStores'));
+        break;
       case 2:
       default:
-        return const MarketplaceTab(key: ValueKey('marketplace'));
+        content = const MarketplaceTab(key: ValueKey('marketplace'));
+        break;
     }
+    
+    return Container(
+      constraints: BoxConstraints(
+        minHeight: MediaQuery.of(context).size.height,
+      ),
+      child: content,
+    );
   }
 
   Widget _buildHero(BuildContext context) {

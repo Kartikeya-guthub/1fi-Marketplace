@@ -166,30 +166,87 @@ class _ProductDetailsPageState extends ConsumerState<ProductDetailsPage> {
                 ),
               ),
               
-              // Bottom CTA
-              SafeArea(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: ElevatedButton(
-                    onPressed: selectedEmiPlan == null
-                        ? null
-                        : () {
-                            showModalBottomSheet(
-                              context: context,
-                              backgroundColor: Colors.transparent,
-                              isScrollControlled: true,
-                              builder: (context) => ConfirmationSheet(
-                                product: product,
-                                selectedVariant: selectedVariant,
-                                selectedPlan: selectedEmiPlan,
-                              ),
-                            );
-                          },
-                    child: Text(
-                      selectedEmiPlan == null
-                          ? 'Select an EMI plan'
-                          : 'Continue with ${formatINR(selectedEmiPlan.monthlyAmount)}/mo',
+              // Custom Dynamic EMI Bottom Bar
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 12.0),
+                decoration: BoxDecoration(
+                  color: AppColors.cardBg,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black.withOpacity(0.04),
+                      blurRadius: 8,
+                      offset: const Offset(0, -2),
                     ),
+                  ],
+                ),
+                child: SafeArea(
+                  child: Row(
+                    children: [
+                      // Dynamic Costing Info
+                      Expanded(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              selectedEmiPlan != null 
+                                ? '${formatINR(selectedEmiPlan.monthlyAmount)}/mo'
+                                : '--',
+                              style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                                fontWeight: FontWeight.w800,
+                                color: AppColors.primaryPurple,
+                              ),
+                            ),
+                            Text(
+                              selectedEmiPlan != null
+                                  ? 'For ${selectedEmiPlan.tenureMonths} months'
+                                  : 'Select an EMI plan',
+                              style: Theme.of(context).textTheme.bodySmall?.copyWith(
+                                color: AppColors.textSecondary,
+                                fontWeight: FontWeight.w500,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(width: 16),
+                      // Continue Button
+                      SizedBox(
+                        width: 140,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            padding: const EdgeInsets.symmetric(vertical: 14),
+                            backgroundColor: selectedEmiPlan != null ? AppColors.primaryPurple : AppColors.divider,
+                            foregroundColor: selectedEmiPlan != null ? Colors.white : AppColors.textSecondary,
+                            elevation: 0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(24),
+                            ),
+                          ),
+                          onPressed: selectedEmiPlan == null
+                              ? null
+                              : () {
+                                  showModalBottomSheet(
+                                    context: context,
+                                    backgroundColor: Colors.transparent,
+                                    isScrollControlled: true,
+                                    builder: (context) => ConfirmationSheet(
+                                      product: product,
+                                      selectedVariant: selectedVariant,
+                                      selectedPlan: selectedEmiPlan,
+                                    ),
+                                  );
+                                },
+                          child: const Text(
+                            'Continue',
+                            style: TextStyle(
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
